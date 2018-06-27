@@ -3,11 +3,13 @@ import torch.backends.cudnn as cudnn
 import torch.utils.data
 from torch.autograd import Variable
 from torchvision import transforms
-from data_loader import GetLoader, mnist_m_loader
+from data_loader import mnist_loader
 from torchvision import datasets
 from model_compat import DSN
 import torchvision.utils as vutils
 
+
+num_works = 1
 
 def test(epoch, name):
 
@@ -43,8 +45,21 @@ def test(epoch, name):
             dataset=dataset,
             batch_size=batch_size,
             shuffle=False,
-            num_workers=8
+            num_workers=num_works
         )
+
+        # #load mnist_m dataset
+        # mnist_data = torch.load('./dataset/mnist/processed/mnist_test.pt')
+        # dataloader_source = torch.utils.data.DataLoader(
+        #     mnist_loader(
+        #         data = mnist_data[0], 
+        #         label = mnist_data[1],
+        #         transform=img_transform
+        #     ),
+        #     batch_size=batch_size,
+        #     shuffle=True,
+        #     num_workers=num_works
+        # )
 
     elif name == 'mnist_m':
         mode = 'target'
@@ -52,14 +67,14 @@ def test(epoch, name):
         #load mnist_m dataset
         mnist_m_data = torch.load('./dataset/mnist_m/processed/mnist_m_test.pt')
         dataloader = torch.utils.data.DataLoader(
-            mnist_m_loader(
+            mnist_loader(
                 data = mnist_m_data[0], 
                 label = mnist_m_data[1],
                 transform=img_transform
             ),
             batch_size=batch_size,
             shuffle=True,
-            num_workers=8
+            num_workers=num_works
         )
 
         # image_root = os.path.join('dataset', 'mnist_m', 'mnist_m_test')
@@ -155,6 +170,6 @@ def test(epoch, name):
 
         i += 1
 
-    accu = n_correct * 1.0 / n_total
-
-    # print('epoch: %d, accuracy of the %s dataset: %f' % (epoch, name, accu))
+    n_correct = float(n_correct.numpy())
+    accu = n_correct / n_total
+    print 'epoch: %d, accuracy of the %s dataset: %f' % (epoch, name, accu)

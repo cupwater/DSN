@@ -8,7 +8,7 @@ from torch.autograd import Variable
 from torchvision import datasets
 from torchvision import transforms
 from model_compat import DSN
-from data_loader import GetLoader, mnist_m_loader
+from data_loader import mnist_loader
 from functions import SIMSE, DiffLoss, MSE
 from test import test
 
@@ -34,6 +34,9 @@ beta_weight = 0.075
 gamma_weight = 0.25
 momentum = 0.9
 
+
+num_works = 1
+
 manual_seed = random.randint(1, 10000)
 random.seed(manual_seed)
 torch.manual_seed(manual_seed)
@@ -58,13 +61,28 @@ dataloader_source = torch.utils.data.DataLoader(
     ),
     batch_size=batch_size, 
     shuffle=True,
-    num_workers=8
+    num_workers=num_works
 )
+
+#load mnist_m dataset
+# mnist_data = torch.load('./dataset/mnist/processed/mnist_train.pt')
+# dataloader_source = torch.utils.data.DataLoader(
+#     mnist_loader(
+#         data = mnist_data[0], 
+#         label = mnist_data[1],
+#         train=True,
+#         transform=img_transform
+#     ),
+#     batch_size=batch_size,
+#     shuffle=True,
+#     num_workers=num_works
+# )
+
 
 #load mnist_m dataset
 mnist_m_data = torch.load('./dataset/mnist_m/processed/mnist_m_train.pt')
 dataloader_target = torch.utils.data.DataLoader(
-    mnist_m_loader(
+    mnist_loader(
         data = mnist_m_data[0], 
         label = mnist_m_data[1],
         train=True,
@@ -72,7 +90,7 @@ dataloader_target = torch.utils.data.DataLoader(
     ),
     batch_size=batch_size,
     shuffle=True,
-    num_workers=8
+    num_workers=num_works
 )
 
 #####################
@@ -129,9 +147,6 @@ dann_epoch = np.floor(active_domain_loss_step / len_dataloader * 1.0)
 
 current_step = 0
 for epoch in xrange(n_epoch):
-
-    # for batch_idx, (data, target) in enumerate(train_loader):
-
     data_source_iter = iter(dataloader_source)
     data_target_iter = iter(dataloader_target)
 

@@ -3,7 +3,7 @@ import torch.backends.cudnn as cudnn
 import torch.utils.data
 from torch.autograd import Variable
 from torchvision import transforms
-from data_loader import GetLoader
+from data_loader import GetLoader, mnist_m_loader
 from torchvision import datasets
 from model_compat import DSN
 import torchvision.utils as vutils
@@ -48,24 +48,38 @@ def test(epoch, name):
 
     elif name == 'mnist_m':
         mode = 'target'
-        image_root = os.path.join('dataset', 'mnist_m', 'mnist_m_test')
-        test_list = os.path.join('dataset', 'mnist_m', 'mnist_m_test_labels.txt')
 
-        dataset = GetLoader(
-            data_root=image_root,
-            data_list=test_list,
-            transform=img_transform
-        )
-
+        #load mnist_m dataset
+        mnist_m_data = torch.load('./dataset/mnist_m/processed/mnist_m_test.pt')
         dataloader = torch.utils.data.DataLoader(
-            dataset=dataset,
+            mnist_m_loader(
+                data = mnist_m_data[0], 
+                label = mnist_m_data[1],
+                transform=img_transform
+            ),
             batch_size=batch_size,
-            shuffle=False,
+            shuffle=True,
             num_workers=8
         )
 
+        # image_root = os.path.join('dataset', 'mnist_m', 'mnist_m_test')
+        # test_list = os.path.join('dataset', 'mnist_m', 'mnist_m_test_labels.txt')
+
+        # dataset = GetLoader(
+        #     data_root=image_root,
+        #     data_list=test_list,
+        #     transform=img_transform
+        # )
+
+        # dataloader = torch.utils.data.DataLoader(
+        #     dataset=dataset,
+        #     batch_size=batch_size,
+        #     shuffle=False,
+        #     num_workers=8
+        # )
+
     else:
-        print 'error dataset name'
+        print('error dataset name')
 
     ####################
     # load model       #
@@ -143,4 +157,4 @@ def test(epoch, name):
 
     accu = n_correct * 1.0 / n_total
 
-    print 'epoch: %d, accuracy of the %s dataset: %f' % (epoch, name, accu)
+    # print('epoch: %d, accuracy of the %s dataset: %f' % (epoch, name, accu))

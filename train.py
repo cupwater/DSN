@@ -8,7 +8,7 @@ from torch.autograd import Variable
 from torchvision import datasets
 from torchvision import transforms
 from model_compat import DSN
-from data_loader import GetLoader
+from data_loader import GetLoader, mnist_m_loader
 from functions import SIMSE, DiffLoss, MSE
 from test import test
 
@@ -38,39 +38,38 @@ manual_seed = random.randint(1, 10000)
 random.seed(manual_seed)
 torch.manual_seed(manual_seed)
 
-#######################
-# load data           #
-#######################
 
+# transform for images
 img_transform = transforms.Compose([
     transforms.Resize(image_size),
     transforms.ToTensor(),
     transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
 ])
 
-dataset_source = datasets.MNIST(
-    root=source_image_root,
-    train=True,
-    transform=img_transform
-)
-
+#######################
+# load data           #
+#######################
+# load mnist dataset
 dataloader_source = torch.utils.data.DataLoader(
-    dataset=dataset_source,
-    batch_size=batch_size,
+    datasets.MNIST(source_image_root, 
+        train=True, 
+        download=True,
+        transform=img_transform
+    ),
+    batch_size=batch_size, 
     shuffle=True,
     num_workers=8
 )
 
-train_list = os.path.join(target_image_root, 'mnist_m_train_labels.txt')
-
-dataset_target = GetLoader(
-    data_root=os.path.join(target_image_root, 'mnist_m_train'),
-    data_list=train_list,
-    transform=img_transform
-)
-
+#load mnist_m dataset
+mnist_m_data = torch.load('./dataset/mnist_m/processed/mnist_m_train.pt')
 dataloader_target = torch.utils.data.DataLoader(
-    dataset=dataset_target,
+    mnist_m_loader(
+        data = mnist_m_data[0], 
+        label = mnist_m_data[1],
+        train=True,
+        transform=img_transform
+    ),
     batch_size=batch_size,
     shuffle=True,
     num_workers=8
@@ -79,14 +78,12 @@ dataloader_target = torch.utils.data.DataLoader(
 #####################
 #  load model       #
 #####################
-
 my_net = DSN()
+
 
 #####################
 # setup optimizer   #
 #####################
-
-
 def exp_lr_scheduler(optimizer, step, init_lr=lr, lr_decay_step=lr_decay_step, step_decay_weight=step_decay_weight):
 
     # Decay learning rate by a factor of step_decay_weight every lr_decay_step
@@ -120,16 +117,20 @@ if cuda:
 for p in my_net.parameters():
     p.requires_grad = True
 
+
+
 #############################
 # training network          #
 #############################
-
-
 len_dataloader = min(len(dataloader_source), len(dataloader_target))
+print len(dataloader_source)
+print len(dataloader_target)
 dann_epoch = np.floor(active_domain_loss_step / len_dataloader * 1.0)
 
 current_step = 0
 for epoch in xrange(n_epoch):
+
+    # for batch_idx, (data, target) in enumerate(train_loader):
 
     data_source_iter = iter(dataloader_source)
     data_target_iter = iter(dataloader_target)
@@ -257,7 +258,7 @@ for epoch in xrange(n_epoch):
              source_mse.data.cpu().numpy(), source_simse.data.cpu().numpy(), target_dann.data.cpu().numpy(),
              target_diff.data.cpu().numpy(),target_mse.data.cpu().numpy(), target_simse.data.cpu().numpy())
 
-    # print 'step: %d, loss: %f' % (current_step, loss.cpu().data.numpy())
+    print 'step: %d, loss: %f' % (current_step, loss.cpu().data.numpy())
     torch.save(my_net.state_dict(), model_root + '/dsn_mnist_mnistm_epoch_' + str(epoch) + '.pth')
     test(epoch=epoch, name='mnist')
     test(epoch=epoch, name='mnist_m')

@@ -1,0 +1,413 @@
+lr = 1e-2
+batch_size = 32
+image_size = 28
+n_epoch = 100
+step_decay_weight = 0.95
+lr_decay_step = 20000
+active_domain_loss_step = 10000
+weight_decay = 1e-6
+alpha_weight = 0.01
+beta_weight = 0.075
+gamma_weight = 0.25
+momentum = 0.9
+
+source_classification: 0.315538, source_dann: 0.000000, source_diff: 0.000005, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.000000, target_diff: 0.000003, target_mse: 0.000000, target_simse: 0.000000
+step: 1875, loss: 0.315543
+epoch: 0, accuracy of the mnist dataset: 0.984800
+epoch: 0, accuracy of the mnist_m dataset: 0.598600
+source_classification: 0.017985, source_dann: 0.000000, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.000000, target_diff: 0.000001, target_mse: 0.000000, target_simse: 0.000000
+step: 3750, loss: 0.017985
+epoch: 1, accuracy of the mnist dataset: 0.990400
+epoch: 1, accuracy of the mnist_m dataset: 0.640000
+source_classification: 0.007960, source_dann: 0.000000, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.000000, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 5625, loss: 0.007960
+epoch: 2, accuracy of the mnist dataset: 0.988500
+epoch: 2, accuracy of the mnist_m dataset: 0.618800
+source_classification: 0.004876, source_dann: 0.000000, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.000000, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 7500, loss: 0.004877
+epoch: 3, accuracy of the mnist dataset: 0.992600
+epoch: 3, accuracy of the mnist_m dataset: 0.610700
+source_classification: 0.001784, source_dann: 0.000000, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.000000, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 9375, loss: 0.001785
+epoch: 4, accuracy of the mnist dataset: 0.992300
+epoch: 4, accuracy of the mnist_m dataset: 0.613000
+source_classification: 0.055564, source_dann: 0.141468, source_diff: 0.000001, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.151455, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 11250, loss: 0.197034
+epoch: 5, accuracy of the mnist dataset: 0.988000
+epoch: 5, accuracy of the mnist_m dataset: 0.679800
+source_classification: 0.110036, source_dann: 0.180492, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.166763, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 13125, loss: 0.290529
+epoch: 6, accuracy of the mnist dataset: 0.987200
+epoch: 6, accuracy of the mnist_m dataset: 0.706200
+source_classification: 0.000186, source_dann: 0.146252, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.186247, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 15000, loss: 0.146438
+epoch: 7, accuracy of the mnist dataset: 0.989700
+epoch: 7, accuracy of the mnist_m dataset: 0.733500
+source_classification: 0.000290, source_dann: 0.145553, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.162331, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 16875, loss: 0.145843
+epoch: 8, accuracy of the mnist dataset: 0.987100
+epoch: 8, accuracy of the mnist_m dataset: 0.756800
+source_classification: 0.003503, source_dann: 0.171117, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.176955, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 18750, loss: 0.174620
+epoch: 9, accuracy of the mnist dataset: 0.986800
+epoch: 9, accuracy of the mnist_m dataset: 0.765000
+source_classification: 0.000052, source_dann: 0.139169, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.194313, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 20625, loss: 0.139221
+epoch: 10, accuracy of the mnist dataset: 0.989500
+epoch: 10, accuracy of the mnist_m dataset: 0.753900
+source_classification: 0.097593, source_dann: 0.184970, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.173737, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 22500, loss: 0.282563
+epoch: 11, accuracy of the mnist dataset: 0.991500
+epoch: 11, accuracy of the mnist_m dataset: 0.770800
+source_classification: 0.001386, source_dann: 0.150421, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.180167, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 24375, loss: 0.151807
+epoch: 12, accuracy of the mnist dataset: 0.989900
+epoch: 12, accuracy of the mnist_m dataset: 0.776100
+source_classification: 0.008326, source_dann: 0.201058, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.156724, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 26250, loss: 0.209384
+epoch: 13, accuracy of the mnist dataset: 0.986600
+epoch: 13, accuracy of the mnist_m dataset: 0.775500
+source_classification: 0.005894, source_dann: 0.168167, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.185361, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 28125, loss: 0.174061
+epoch: 14, accuracy of the mnist dataset: 0.989100
+epoch: 14, accuracy of the mnist_m dataset: 0.767200
+source_classification: 0.000249, source_dann: 0.168420, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.167987, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 30000, loss: 0.168670
+epoch: 15, accuracy of the mnist dataset: 0.991200
+epoch: 15, accuracy of the mnist_m dataset: 0.782600
+source_classification: 0.237777, source_dann: 0.162291, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.181882, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 31875, loss: 0.400067
+epoch: 16, accuracy of the mnist dataset: 0.990400
+epoch: 16, accuracy of the mnist_m dataset: 0.784700
+source_classification: 0.002329, source_dann: 0.159168, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.179361, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 33750, loss: 0.161497
+epoch: 17, accuracy of the mnist dataset: 0.991300
+epoch: 17, accuracy of the mnist_m dataset: 0.779300
+source_classification: 0.003226, source_dann: 0.173430, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.168574, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 35625, loss: 0.176656
+epoch: 18, accuracy of the mnist dataset: 0.989700
+epoch: 18, accuracy of the mnist_m dataset: 0.778200
+source_classification: 0.000101, source_dann: 0.169941, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.177668, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 37500, loss: 0.170042
+epoch: 19, accuracy of the mnist dataset: 0.990300
+epoch: 19, accuracy of the mnist_m dataset: 0.781500
+source_classification: 0.000001, source_dann: 0.174368, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.182318, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 39375, loss: 0.174369
+epoch: 20, accuracy of the mnist dataset: 0.989400
+epoch: 20, accuracy of the mnist_m dataset: 0.777300
+source_classification: 0.000003, source_dann: 0.167788, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.172569, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 41250, loss: 0.167791
+epoch: 21, accuracy of the mnist dataset: 0.989500
+epoch: 21, accuracy of the mnist_m dataset: 0.777000
+source_classification: 0.000780, source_dann: 0.177929, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170982, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 43125, loss: 0.178709
+epoch: 22, accuracy of the mnist dataset: 0.989700
+epoch: 22, accuracy of the mnist_m dataset: 0.784900
+source_classification: 0.096899, source_dann: 0.170636, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.168422, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 45000, loss: 0.267535
+epoch: 23, accuracy of the mnist dataset: 0.991000
+epoch: 23, accuracy of the mnist_m dataset: 0.782200
+source_classification: 0.000015, source_dann: 0.182955, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.158705, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 46875, loss: 0.182971
+epoch: 24, accuracy of the mnist dataset: 0.988000
+epoch: 24, accuracy of the mnist_m dataset: 0.778200
+source_classification: 0.000144, source_dann: 0.165674, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.189510, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 48750, loss: 0.165817
+epoch: 25, accuracy of the mnist dataset: 0.990900
+epoch: 25, accuracy of the mnist_m dataset: 0.773900
+source_classification: 0.001915, source_dann: 0.178763, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170347, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 50625, loss: 0.180678
+epoch: 26, accuracy of the mnist dataset: 0.989900
+epoch: 26, accuracy of the mnist_m dataset: 0.787100
+source_classification: 0.242700, source_dann: 0.165806, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.171753, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 52500, loss: 0.408506
+epoch: 27, accuracy of the mnist dataset: 0.991700
+epoch: 27, accuracy of the mnist_m dataset: 0.793700
+source_classification: 0.000022, source_dann: 0.186856, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.161983, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 54375, loss: 0.186877
+epoch: 28, accuracy of the mnist dataset: 0.989600
+epoch: 28, accuracy of the mnist_m dataset: 0.789000
+source_classification: 0.000015, source_dann: 0.171428, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.168437, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 56250, loss: 0.171443
+epoch: 29, accuracy of the mnist dataset: 0.990400
+epoch: 29, accuracy of the mnist_m dataset: 0.781100
+source_classification: 0.000000, source_dann: 0.174446, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170422, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 58125, loss: 0.174446
+epoch: 30, accuracy of the mnist dataset: 0.992500
+epoch: 30, accuracy of the mnist_m dataset: 0.787100
+source_classification: 0.000060, source_dann: 0.166276, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.173093, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 60000, loss: 0.166336
+epoch: 31, accuracy of the mnist dataset: 0.989200
+epoch: 31, accuracy of the mnist_m dataset: 0.782700
+source_classification: 0.000001, source_dann: 0.169585, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.169406, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 61875, loss: 0.169586
+epoch: 32, accuracy of the mnist dataset: 0.991800
+epoch: 32, accuracy of the mnist_m dataset: 0.788400
+source_classification: 0.000009, source_dann: 0.176335, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.175536, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 63750, loss: 0.176344
+epoch: 33, accuracy of the mnist dataset: 0.989900
+epoch: 33, accuracy of the mnist_m dataset: 0.783100
+source_classification: 0.000021, source_dann: 0.170615, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170246, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 65625, loss: 0.170636
+epoch: 34, accuracy of the mnist dataset: 0.989800
+epoch: 34, accuracy of the mnist_m dataset: 0.795100
+source_classification: 0.000002, source_dann: 0.190482, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170781, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 67500, loss: 0.190484
+epoch: 35, accuracy of the mnist dataset: 0.991800
+epoch: 35, accuracy of the mnist_m dataset: 0.790300
+source_classification: 0.000020, source_dann: 0.167726, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.160525, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 69375, loss: 0.167746
+epoch: 36, accuracy of the mnist dataset: 0.991000
+epoch: 36, accuracy of the mnist_m dataset: 0.774400
+source_classification: 0.011260, source_dann: 0.182936, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.163849, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 71250, loss: 0.194195
+epoch: 37, accuracy of the mnist dataset: 0.991200
+epoch: 37, accuracy of the mnist_m dataset: 0.782000
+source_classification: 0.000310, source_dann: 0.178351, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.171394, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 73125, loss: 0.178662
+epoch: 38, accuracy of the mnist dataset: 0.991300
+epoch: 38, accuracy of the mnist_m dataset: 0.781400
+source_classification: 0.000002, source_dann: 0.169790, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.166094, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 75000, loss: 0.169792
+epoch: 39, accuracy of the mnist dataset: 0.990400
+epoch: 39, accuracy of the mnist_m dataset: 0.775600
+source_classification: 0.000000, source_dann: 0.175165, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.171236, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 76875, loss: 0.175165
+epoch: 40, accuracy of the mnist dataset: 0.991700
+epoch: 40, accuracy of the mnist_m dataset: 0.789700
+source_classification: 0.000002, source_dann: 0.179492, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.164858, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 78750, loss: 0.179494
+epoch: 41, accuracy of the mnist dataset: 0.991700
+epoch: 41, accuracy of the mnist_m dataset: 0.783500
+source_classification: 0.000000, source_dann: 0.174349, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.180612, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 80625, loss: 0.174350
+epoch: 42, accuracy of the mnist dataset: 0.990600
+epoch: 42, accuracy of the mnist_m dataset: 0.786600
+source_classification: 0.000001, source_dann: 0.176714, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.167973, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 82500, loss: 0.176715
+epoch: 43, accuracy of the mnist dataset: 0.989800
+epoch: 43, accuracy of the mnist_m dataset: 0.782500
+source_classification: 0.000001, source_dann: 0.173004, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.167722, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 84375, loss: 0.173005
+epoch: 44, accuracy of the mnist dataset: 0.992000
+epoch: 44, accuracy of the mnist_m dataset: 0.788300
+source_classification: 0.000000, source_dann: 0.172009, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170315, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 86250, loss: 0.172009
+epoch: 45, accuracy of the mnist dataset: 0.991300
+epoch: 45, accuracy of the mnist_m dataset: 0.792000
+source_classification: 0.000001, source_dann: 0.169311, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170901, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 88125, loss: 0.169312
+epoch: 46, accuracy of the mnist dataset: 0.992400
+epoch: 46, accuracy of the mnist_m dataset: 0.790100
+source_classification: 0.014600, source_dann: 0.175174, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.163945, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 90000, loss: 0.189773
+epoch: 47, accuracy of the mnist dataset: 0.991500
+epoch: 47, accuracy of the mnist_m dataset: 0.790600
+source_classification: 0.000000, source_dann: 0.170114, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.173728, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 91875, loss: 0.170114
+epoch: 48, accuracy of the mnist dataset: 0.992100
+epoch: 48, accuracy of the mnist_m dataset: 0.797600
+source_classification: 0.000000, source_dann: 0.172465, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.175955, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 93750, loss: 0.172465
+epoch: 49, accuracy of the mnist dataset: 0.992500
+epoch: 49, accuracy of the mnist_m dataset: 0.798100
+source_classification: 0.000000, source_dann: 0.173036, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.168094, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 95625, loss: 0.173036
+epoch: 50, accuracy of the mnist dataset: 0.991900
+epoch: 50, accuracy of the mnist_m dataset: 0.794200
+source_classification: 0.000536, source_dann: 0.173216, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.173593, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 97500, loss: 0.173752
+epoch: 51, accuracy of the mnist dataset: 0.992300
+epoch: 51, accuracy of the mnist_m dataset: 0.796100
+source_classification: 0.000001, source_dann: 0.171190, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.174366, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 99375, loss: 0.171191
+epoch: 52, accuracy of the mnist dataset: 0.992200
+epoch: 52, accuracy of the mnist_m dataset: 0.787800
+source_classification: 0.000000, source_dann: 0.173358, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.172675, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 101250, loss: 0.173358
+epoch: 53, accuracy of the mnist dataset: 0.992900
+epoch: 53, accuracy of the mnist_m dataset: 0.791000
+source_classification: 0.000002, source_dann: 0.169688, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.177180, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 103125, loss: 0.169690
+epoch: 54, accuracy of the mnist dataset: 0.992300
+epoch: 54, accuracy of the mnist_m dataset: 0.787300
+source_classification: 0.000073, source_dann: 0.177985, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170845, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 105000, loss: 0.178058
+epoch: 55, accuracy of the mnist dataset: 0.990100
+epoch: 55, accuracy of the mnist_m dataset: 0.788800
+source_classification: 0.000000, source_dann: 0.178605, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170045, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 106875, loss: 0.178605
+epoch: 56, accuracy of the mnist dataset: 0.991800
+epoch: 56, accuracy of the mnist_m dataset: 0.780000
+source_classification: 0.000000, source_dann: 0.175149, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.171902, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 108750, loss: 0.175149
+epoch: 57, accuracy of the mnist dataset: 0.991500
+epoch: 57, accuracy of the mnist_m dataset: 0.793600
+source_classification: 0.000021, source_dann: 0.171756, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.172158, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 110625, loss: 0.171778
+epoch: 58, accuracy of the mnist dataset: 0.991600
+epoch: 58, accuracy of the mnist_m dataset: 0.796600
+source_classification: 0.000000, source_dann: 0.166487, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.174050, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 112500, loss: 0.166487
+epoch: 59, accuracy of the mnist dataset: 0.991300
+epoch: 59, accuracy of the mnist_m dataset: 0.790900
+source_classification: 0.000000, source_dann: 0.173344, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.175547, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 114375, loss: 0.173344
+epoch: 60, accuracy of the mnist dataset: 0.992200
+epoch: 60, accuracy of the mnist_m dataset: 0.792300
+source_classification: 0.000000, source_dann: 0.168908, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.174777, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 116250, loss: 0.168908
+epoch: 61, accuracy of the mnist dataset: 0.992000
+epoch: 61, accuracy of the mnist_m dataset: 0.787400
+source_classification: 0.000000, source_dann: 0.175965, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.173251, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 118125, loss: 0.175965
+epoch: 62, accuracy of the mnist dataset: 0.992200
+epoch: 62, accuracy of the mnist_m dataset: 0.790500
+source_classification: 0.000001, source_dann: 0.170864, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.189335, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 120000, loss: 0.170865
+epoch: 63, accuracy of the mnist dataset: 0.990600
+epoch: 63, accuracy of the mnist_m dataset: 0.770100
+source_classification: 0.000005, source_dann: 0.181567, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.172511, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 121875, loss: 0.181572
+epoch: 64, accuracy of the mnist dataset: 0.990900
+epoch: 64, accuracy of the mnist_m dataset: 0.785900
+source_classification: 0.000000, source_dann: 0.171845, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.176519, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 123750, loss: 0.171846
+epoch: 65, accuracy of the mnist dataset: 0.991200
+epoch: 65, accuracy of the mnist_m dataset: 0.784000
+source_classification: 0.000616, source_dann: 0.172432, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.175442, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 125625, loss: 0.173048
+epoch: 66, accuracy of the mnist dataset: 0.991300
+epoch: 66, accuracy of the mnist_m dataset: 0.781300
+source_classification: 0.000834, source_dann: 0.177587, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.166775, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 127500, loss: 0.178421
+epoch: 67, accuracy of the mnist dataset: 0.990800
+epoch: 67, accuracy of the mnist_m dataset: 0.786700
+source_classification: 0.000027, source_dann: 0.175837, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.171678, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 129375, loss: 0.175864
+epoch: 68, accuracy of the mnist dataset: 0.991100
+epoch: 68, accuracy of the mnist_m dataset: 0.786200
+source_classification: 0.000000, source_dann: 0.174284, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.174256, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 131250, loss: 0.174284
+epoch: 69, accuracy of the mnist dataset: 0.990900
+epoch: 69, accuracy of the mnist_m dataset: 0.790400
+source_classification: 0.000002, source_dann: 0.165432, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.173146, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 133125, loss: 0.165434
+epoch: 70, accuracy of the mnist dataset: 0.991100
+epoch: 70, accuracy of the mnist_m dataset: 0.785800
+source_classification: 0.000284, source_dann: 0.175977, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.165834, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 135000, loss: 0.176261
+epoch: 71, accuracy of the mnist dataset: 0.990700
+epoch: 71, accuracy of the mnist_m dataset: 0.794500
+source_classification: 0.000000, source_dann: 0.171654, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.172308, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 136875, loss: 0.171654
+epoch: 72, accuracy of the mnist dataset: 0.990800
+epoch: 72, accuracy of the mnist_m dataset: 0.791600
+source_classification: 0.053730, source_dann: 0.174099, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.174589, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 138750, loss: 0.227828
+epoch: 73, accuracy of the mnist dataset: 0.989400
+epoch: 73, accuracy of the mnist_m dataset: 0.791400
+source_classification: 0.000000, source_dann: 0.172515, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.178234, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 140625, loss: 0.172515
+epoch: 74, accuracy of the mnist dataset: 0.990400
+epoch: 74, accuracy of the mnist_m dataset: 0.783600
+source_classification: 0.000000, source_dann: 0.169970, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.176390, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 142500, loss: 0.169970
+epoch: 75, accuracy of the mnist dataset: 0.991400
+epoch: 75, accuracy of the mnist_m dataset: 0.782000
+source_classification: 0.000017, source_dann: 0.170312, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.176355, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 144375, loss: 0.170329
+epoch: 76, accuracy of the mnist dataset: 0.990900
+epoch: 76, accuracy of the mnist_m dataset: 0.779600
+source_classification: 0.000000, source_dann: 0.171066, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.184742, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 146250, loss: 0.171066
+epoch: 77, accuracy of the mnist dataset: 0.991300
+epoch: 77, accuracy of the mnist_m dataset: 0.795900
+source_classification: 0.000000, source_dann: 0.165057, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.174728, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 148125, loss: 0.165057
+epoch: 78, accuracy of the mnist dataset: 0.992300
+epoch: 78, accuracy of the mnist_m dataset: 0.789300
+source_classification: 0.000000, source_dann: 0.179017, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.161239, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 150000, loss: 0.179017
+epoch: 79, accuracy of the mnist dataset: 0.992500
+epoch: 79, accuracy of the mnist_m dataset: 0.785900
+source_classification: 0.000000, source_dann: 0.167841, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.180030, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 151875, loss: 0.167841
+epoch: 80, accuracy of the mnist dataset: 0.992400
+epoch: 80, accuracy of the mnist_m dataset: 0.781900
+source_classification: 0.000009, source_dann: 0.170082, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.177249, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 153750, loss: 0.170091
+epoch: 81, accuracy of the mnist dataset: 0.992600
+epoch: 81, accuracy of the mnist_m dataset: 0.778500
+source_classification: 0.000000, source_dann: 0.173090, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.187769, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 155625, loss: 0.173090
+epoch: 82, accuracy of the mnist dataset: 0.992100
+epoch: 82, accuracy of the mnist_m dataset: 0.779100
+source_classification: 0.000000, source_dann: 0.164308, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.175741, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 157500, loss: 0.164308
+epoch: 83, accuracy of the mnist dataset: 0.991200
+epoch: 83, accuracy of the mnist_m dataset: 0.780900
+source_classification: 0.000000, source_dann: 0.173604, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.179061, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 159375, loss: 0.173604
+epoch: 84, accuracy of the mnist dataset: 0.992300
+epoch: 84, accuracy of the mnist_m dataset: 0.781800
+source_classification: 0.000000, source_dann: 0.171198, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.174644, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 161250, loss: 0.171198
+epoch: 85, accuracy of the mnist dataset: 0.992000
+epoch: 85, accuracy of the mnist_m dataset: 0.776400
+source_classification: 0.000000, source_dann: 0.175303, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.173629, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 163125, loss: 0.175303
+epoch: 86, accuracy of the mnist dataset: 0.992700
+epoch: 86, accuracy of the mnist_m dataset: 0.783000
+source_classification: 0.000000, source_dann: 0.173702, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.171800, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 165000, loss: 0.173702
+epoch: 87, accuracy of the mnist dataset: 0.992300
+epoch: 87, accuracy of the mnist_m dataset: 0.782900
+source_classification: 0.000138, source_dann: 0.173842, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.174240, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 166875, loss: 0.173980
+epoch: 88, accuracy of the mnist dataset: 0.992100
+epoch: 88, accuracy of the mnist_m dataset: 0.783500
+source_classification: 0.000000, source_dann: 0.172935, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.169931, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 168750, loss: 0.172935
+epoch: 89, accuracy of the mnist dataset: 0.992100
+epoch: 89, accuracy of the mnist_m dataset: 0.784900
+source_classification: 0.000000, source_dann: 0.173813, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.172326, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 170625, loss: 0.173813
+epoch: 90, accuracy of the mnist dataset: 0.991700
+epoch: 90, accuracy of the mnist_m dataset: 0.784400
+source_classification: 0.000000, source_dann: 0.174567, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.173347, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 172500, loss: 0.174567
+epoch: 91, accuracy of the mnist dataset: 0.991400
+epoch: 91, accuracy of the mnist_m dataset: 0.780100
+source_classification: 0.000000, source_dann: 0.172062, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.178082, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 174375, loss: 0.172062
+epoch: 92, accuracy of the mnist dataset: 0.992400
+epoch: 92, accuracy of the mnist_m dataset: 0.790200
+source_classification: 0.000000, source_dann: 0.174495, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.171589, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 176250, loss: 0.174495
+epoch: 93, accuracy of the mnist dataset: 0.991900
+epoch: 93, accuracy of the mnist_m dataset: 0.789700
+source_classification: 0.000008, source_dann: 0.179679, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.173804, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 178125, loss: 0.179687
+epoch: 94, accuracy of the mnist dataset: 0.991900
+epoch: 94, accuracy of the mnist_m dataset: 0.779700
+source_classification: 0.000000, source_dann: 0.170820, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.175079, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 180000, loss: 0.170820
+epoch: 95, accuracy of the mnist dataset: 0.991600
+epoch: 95, accuracy of the mnist_m dataset: 0.788900
+source_classification: 0.000015, source_dann: 0.169875, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170451, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 181875, loss: 0.169890
+epoch: 96, accuracy of the mnist dataset: 0.992400
+epoch: 96, accuracy of the mnist_m dataset: 0.791200
+source_classification: 0.000001, source_dann: 0.170443, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.170404, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 183750, loss: 0.170444
+epoch: 97, accuracy of the mnist dataset: 0.992800
+epoch: 97, accuracy of the mnist_m dataset: 0.791800
+source_classification: 0.000000, source_dann: 0.175454, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.169235, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 185625, loss: 0.175454
+epoch: 98, accuracy of the mnist dataset: 0.992600
+epoch: 98, accuracy of the mnist_m dataset: 0.791600
+source_classification: 0.000000, source_dann: 0.170621, source_diff: 0.000000, source_mse: 0.000000, source_simse: 0.000000, target_dann: 0.175469, target_diff: 0.000000, target_mse: 0.000000, target_simse: 0.000000
+step: 187500, loss: 0.170621
+epoch: 99, accuracy of the mnist dataset: 0.992500
+epoch: 99, accuracy of the mnist_m dataset: 0.790900

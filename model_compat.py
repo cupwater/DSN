@@ -136,6 +136,10 @@ class DSN(nn.Module):
         if mode == 'source':
             class_label = self.shared_encoder_pred_class(shared_code)
             result.append(class_label)
+        # if we add some target labeled data in training dataset
+        if mode == 'target':
+            class_label = self.shared_encoder_pred_class(shared_code)
+            result.append(class_label)
 
         # shared decoder
 

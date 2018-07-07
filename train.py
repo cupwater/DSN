@@ -27,6 +27,8 @@ image_size = 28
 n_epoch = 100
 step_decay_weight = 0.95
 lr_decay_step = 20000
+ # only encoding target and source domain dataset, no adversarial. 
+ # when finished encoding, then adversarial traning to align source and target domain
 active_domain_loss_step = 10000
 weight_decay = 1e-6
 alpha_weight = 0.01
@@ -64,8 +66,8 @@ dataloader_source = torch.utils.data.DataLoader(
     num_workers=num_works
 )
 
-#load mnist_m dataset
-# mnist_data = torch.load('./dataset/mnist/processed/mnist_train.pt')
+# # load mnist_m dataset
+# mnist_data = torch.load('./dataset/mnist/processed/training.pt')
 # dataloader_source = torch.utils.data.DataLoader(
 #     mnist_loader(
 #         data = mnist_data[0], 
@@ -137,6 +139,8 @@ for p in my_net.parameters():
 
 
 
+TrainLog = open('log.txt', 'w')
+
 #############################
 # training network          #
 #############################
@@ -151,6 +155,7 @@ for epoch in xrange(n_epoch):
     data_target_iter = iter(dataloader_target)
 
     i = 0
+    # print 'debug 1'
 
     while i < len_dataloader:
 
@@ -170,6 +175,8 @@ for epoch in xrange(n_epoch):
         domain_label = torch.ones(batch_size)
         domain_label = domain_label.long()
 
+        # print 'debug 2'
+
         if cuda:
             t_img = t_img.cuda()
             t_label = t_label.cuda()
@@ -186,23 +193,34 @@ for epoch in xrange(n_epoch):
         if current_step > active_domain_loss_step:
             p = float(i + (epoch - dann_epoch) * len_dataloader / (n_epoch - dann_epoch) / len_dataloader)
             p = 2. / (1. + np.exp(-10 * p)) - 1
-
             # activate domain loss
             result = my_net(input_data=target_inputv_img, mode='target', rec_scheme='all', p=p)
-            target_privte_code, target_share_code, target_domain_label, target_rec_code = result
+            target_privte_code, target_share_code, target_domain_label, target_class_label, target_rec_code = result
+            # target_privte_code, target_share_code, target_domain_label, target_rec_code = result
             target_dann = gamma_weight * loss_similarity(target_domain_label, target_domainv_label)
             loss += target_dann
         else:
             target_dann = Variable(torch.zeros(1).float().cuda())
             result = my_net(input_data=target_inputv_img, mode='target', rec_scheme='all')
-            target_privte_code, target_share_code, _, target_rec_code = result
+            # target_privte_code, target_share_code, _, target_rec_code = result
+            target_privte_code, target_share_code, _, target_class_label, target_rec_code = result
 
+        # print 'debug 3'
+        # classification loss for target domain
+        target_classification = loss_classification(target_class_label, target_classv_label)
+        loss += target_classification
+        # different loss
         target_diff= beta_weight * loss_diff(target_privte_code, target_share_code)
         loss += target_diff
+        
+        # reconstruct, L1 + L2 reconstruct loss
         target_mse = alpha_weight * loss_recon1(target_rec_code, target_inputv_img)
         loss += target_mse
         target_simse = alpha_weight * loss_recon2(target_rec_code, target_inputv_img)
         loss += target_simse
+        # target_mse = 0
+        # target_simse = 0
+
 
         loss.backward()
         optimizer.step()
@@ -213,6 +231,8 @@ for epoch in xrange(n_epoch):
 
         data_source = data_source_iter.next()
         s_img, s_label = data_source
+
+        # print 'debug 4'
 
         my_net.zero_grad()
         batch_size = len(s_label)
@@ -238,9 +258,7 @@ for epoch in xrange(n_epoch):
         source_domainv_label = Variable(domain_label)
 
         if current_step > active_domain_loss_step:
-
             # activate domain loss
-
             result = my_net(input_data=source_inputv_img, mode='source', rec_scheme='all', p=p)
             source_privte_code, source_share_code, source_domain_label, source_class_label, source_rec_code = result
             source_dann = gamma_weight * loss_similarity(source_domain_label, source_domainv_label)
@@ -253,12 +271,19 @@ for epoch in xrange(n_epoch):
         source_classification = loss_classification(source_class_label, source_classv_label)
         loss += source_classification
 
+        # print 'debug 5'
+        # different loss
         source_diff = beta_weight * loss_diff(source_privte_code, source_share_code)
         loss += source_diff
+
+        # reconstruct loss
         source_mse = alpha_weight * loss_recon1(source_rec_code, source_inputv_img)
         loss += source_mse
         source_simse = alpha_weight * loss_recon2(source_rec_code, source_inputv_img)
         loss += source_simse
+        
+        # source_mse = 0
+        # source_simse = 0
 
         loss.backward()
         optimizer = exp_lr_scheduler(optimizer=optimizer, step=current_step)
@@ -266,17 +291,27 @@ for epoch in xrange(n_epoch):
 
         i += 1
         current_step += 1
-    print 'source_classification: %f, source_dann: %f, source_diff: %f, ' \
+    # print >> TrainLog, 'source_classification: %f, source_dann: %f, source_diff: %f, ' \
+    #       'source_mse: %f, source_simse: %f, target_dann: %f, target_diff: %f, ' \
+    #       'target_mse: %f, target_simse: %f' \
+    #       % (source_classification.data.cpu().numpy(), source_dann.data.cpu().numpy(), source_diff.data.cpu().numpy(),
+    #          source_mse.data.cpu().numpy(), source_simse.data.cpu().numpy(), target_dann.data.cpu().numpy(),
+    #          target_diff.data.cpu().numpy(),target_mse.data.cpu().numpy(), target_simse.data.cpu().numpy())
+
+    print >> TrainLog, 'source_classification: %f, source_dann: %f, source_diff: %f, ' \
           'source_mse: %f, source_simse: %f, target_dann: %f, target_diff: %f, ' \
           'target_mse: %f, target_simse: %f' \
           % (source_classification.data.cpu().numpy(), source_dann.data.cpu().numpy(), source_diff.data.cpu().numpy(),
-             source_mse.data.cpu().numpy(), source_simse.data.cpu().numpy(), target_dann.data.cpu().numpy(),
-             target_diff.data.cpu().numpy(),target_mse.data.cpu().numpy(), target_simse.data.cpu().numpy())
+             source_mse, source_simse, target_dann.data.cpu().numpy(),
+             target_diff.data.cpu().numpy(),target_mse, target_simse)
 
-    print 'step: %d, loss: %f' % (current_step, loss.cpu().data.numpy())
+    print >> TrainLog, 'step: %d, loss: %f' % (current_step, loss.cpu().data.numpy())
     torch.save(my_net.state_dict(), model_root + '/dsn_mnist_mnistm_epoch_' + str(epoch) + '.pth')
-    test(epoch=epoch, name='mnist')
-    test(epoch=epoch, name='mnist_m')
+    print 'debug 1'
+    test(epoch=epoch, name='mnist', logFile=TrainLog)
+    print 'debug 2'
+    test(epoch=epoch, name='mnist_m',  logFile=TrainLog)
+    print 'debug 3'
 
 print 'done'
 

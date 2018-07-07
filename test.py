@@ -11,7 +11,7 @@ import torchvision.utils as vutils
 
 num_works = 1
 
-def test(epoch, name):
+def test(epoch, name, logFile):
 
     ###################
     # params          #
@@ -65,7 +65,7 @@ def test(epoch, name):
         mode = 'target'
 
         #load mnist_m dataset
-        mnist_m_data = torch.load('./dataset/mnist_m/processed/mnist_m_test.pt')
+        mnist_m_data = torch.load('./dataset/mnist_m/processed/mnist_m_testing.pt')
         dataloader = torch.utils.data.DataLoader(
             mnist_loader(
                 data = mnist_m_data[0], 
@@ -172,4 +172,4 @@ def test(epoch, name):
 
     n_correct = float(n_correct.numpy())
     accu = n_correct / n_total
-    print 'epoch: %d, accuracy of the %s dataset: %f' % (epoch, name, accu)
+    print >> logFile, 'epoch: %d, accuracy of the %s dataset: %f' % (epoch, name, accu)
